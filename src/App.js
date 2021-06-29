@@ -13,6 +13,8 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import About from './components/About';
+import EloRequest from './components/EloRequest';
+import EloHistory from './components/EloHistory';
 
 
 //Private route component
@@ -20,7 +22,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   console.log('----This is a private route-----')
   let user = localStorage.getItem('jwtToken');
 
-  // ..rest is data that we set such as our functions etc and props is data that already there
+  // ..rest is data that we set such as our functions etc and props is data thats already there
     return <Route {...rest} render={ (props) => {
     return user ? <Component {...rest} {...props} /> : <Redirect to='/login' />
   } } />
@@ -79,6 +81,8 @@ function App() {
        render={ (props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
         <Route path='/about' component={ About } />
         <Route exact path='/' component={ Welcome } />
+        <PrivateRoute path= '/elorequest' component={EloRequest} user={currentUser} handleLogout={handleLogout}/>
+        <PrivateRoute path= '/elohistory' component={EloHistory} user={currentUser} handleLogout={handleLogout}/>
         <PrivateRoute path='/profile' component={ Profile } user={currentUser} handleLogout={handleLogout} />
            
       </Switch>

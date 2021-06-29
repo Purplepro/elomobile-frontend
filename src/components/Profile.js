@@ -31,6 +31,7 @@ const Profile = (props) => {
     return (
         <div>
             { props.user ? userData : errorDiv() }
+            <Link to="/elohistory"><button className="btn btn-primary">History</button></Link>
         </div>
     );
 

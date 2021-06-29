@@ -10,5 +10,104 @@ body {
   bottom: 0;
   width: 100%;
   height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 60px; 
+}
+
+/* two color themes I will be using
+F8FEC1
+7095C8
+*/
+
+.Wsection-1 {
+  height: 100vh !important;
+  background-color: #3cb353;
+}
+
+.Wsection-2 {
+  height: 100vh !important;
+  background-color: #ffffff;
+}
+
+/* .welcome-container {
+  height: 200vh !important;
+} */
+
+
+.elo_page {
+  position: relative;
+  background-color: #ffffff;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /* width: 100%; */
+  height: 100vh;
+  /* background-size: cover; */
+
+}
+
+
+.elo_form_div {
+  position: relative !important;
+  background-color: #fdfdfd !important;
+  border-radius: 15px;
+  -moz-box-shadow: 4px 4px 4px 4px #7095C8;
+  -webkit-box-shadow: 4px 4px 4px 4px #7095C8;
+  box-shadow: 4px 4px 4px 4px #7095C8;
+  padding: 10px;
+  width: 600px;
+  height: 600px;
+  /* margin-left: 300px; */
+  padding-left: 160px;
+  margin: 0 auto !important;
+  margin-top: 150px !important;
+}
+
+
+
+.elo-input {
+  display: block !important;
+  border: 1px solid #3cb353 ;
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-right: 10px;
+  outline: none;
+  background-color: #d6d6d6;
+}
+.elo-labels {
+  margin-right: 5px;
+}
+
+.elo-button {
+  background-color: #3cb353;
+  border: none;
+  margin-top: 10px;
+  width: 400px;
+  height:40px;
+  padding-right: 200px;
+}
+
+
+/* about page */
+.Asection-1 {
+  height: 100vh !important;
+}
+.Asection-2 {
+  height: 100vh !important;
+}
+
+.pie-chart {
+  width: 500px;
+  height: 500px;
+}
+
+.about {
+  scroll-snap-type: y mandatory;
+  overflow: scroll;
+  height: 100vh;
+}
+
+.snap {
+  scroll-snap-align: start;
 }
