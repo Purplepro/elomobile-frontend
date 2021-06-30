@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, state} from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import {Redirect, useHistory} from 'react-router-dom'
+import EloMap from './EloMap';
+import Map from '../../src'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
-const currentUser = localStorage.getItem('jwtToken'); 
+const currentUser = localStorage.getItem('jwtToken');
+
+
 
 
 
@@ -11,7 +14,6 @@ const currentUser = localStorage.getItem('jwtToken');
 
 
 const EloRequest = (props) => {
-        const history = useHistory();
         const [requests, setRequests] = useState([]);
         const [fullName, setFullName] = useState("");
         const [evMake, setEvMake] = useState("");
@@ -40,6 +42,12 @@ const EloRequest = (props) => {
                 setPhoneNumber(e.target.value)
         }
 
+
+
+
+
+
+       
         
         
         const submitHandler = async (e) => {
@@ -64,7 +72,8 @@ const EloRequest = (props) => {
                         phoneNumber: phoneNumber,
                     },
                 });
-                window.location.reload();
+                console.log(updatedEloHistory.data);
+                // window.location.reload();
             } catch (error) {
                 console.log(error);
                 console.log( 'error attempting to submit service order request')
@@ -138,7 +147,10 @@ const EloRequest = (props) => {
             <button className='btn btn-primary elo-button' type='submit'>Submit</button>
                 </form>
             </div>
-
+            <div className="map-area">
+            
+            </div>
+            <EloMap/>
         </div>
     )
 }

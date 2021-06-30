@@ -83,7 +83,7 @@ function App() {
         <Route exact path='/' component={ Welcome } />
         <PrivateRoute path= '/elorequest' component={EloRequest} user={currentUser} handleLogout={handleLogout}/>
         <PrivateRoute path= '/elohistory' component={EloHistory} user={currentUser} handleLogout={handleLogout}/>
-        <PrivateRoute path='/profile' component={ Profile } user={currentUser} handleLogout={handleLogout} />
+        <PrivateRoute path='/profile' component={ Profile } user={currentUser} nowCurrentUser={nowCurrentUser} handleLogout={handleLogout} />
            
       </Switch>
       </div>

@@ -21,11 +21,21 @@ F8FEC1
 .Wsection-1 {
   height: 100vh !important;
   background-color: #3cb353;
+  box-sizing: border-box;
+  /* background-size: cover; */
+  /* position:  absolute !important; */
+  /* top: 0 !important;
+  left: 0 !important; */
+  width: 100vw !important; 
 }
 
 .Wsection-2 {
   height: 100vh !important;
   background-color: #ffffff;
+  /* position:  absolute !important; */
+  /* top: 0 !important;
+  left: 0 !important; */
+  width: 100vw !important; 
 }
 
 /* .welcome-container {
@@ -110,4 +120,13 @@ F8FEC1
 
 .snap {
   scroll-snap-align: start;
+}
+
+
+
+/* elo service request page */
+
+
+.map-area {
+  height: 50vh;
 }
