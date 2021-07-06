@@ -7,10 +7,11 @@ const currentUser = localStorage.getItem('jwtToken');
 
 
 
-const EloHistory = () => {
+const EloHistory = (props) => {
 
     const [data, setData] = useState([]);
-
+    const [location, setLocation] = useState("");
+    console.log()
 
     useEffect(() => {
         const url = `${REACT_APP_SERVER_URL}/api/elorequest`;
@@ -35,25 +36,71 @@ const EloHistory = () => {
         console.log()
 
     const cancelService = async (service) => {
-            await fetch(`${REACT_APP_SERVER_URL}/api/elohistory/${service._id}`, {
+            await fetch(`${REACT_APP_SERVER_URL}/api/elorequest/${service._id}`, {     
               method: "DELETE",
               headers: {
                 Authorization: currentUser,
-              },
+              },    
             }).then((res) => {
+                console.log(res)
+                console.log('hitting delete route')
+                setData(data.filter(request => request._id !== service._id))
             //   window.location.reload();
             });
           };
 
-    const seeHistory = data.length && data.map((data, i) => { 
+
+          const handleLocationChange = (e) => {
+              setLocation(e.target.value);
+          }
+
+          const updateLocation = async(e) => {
+            
+            e.preventDefault();
+            console.log('ummmpa looompa')
+                                   
+                await fetch(`${REACT_APP_SERVER_URL}/api/elorequest/${e._id}`, {
+                        method: "put",
+                        headers: {
+                            'Authorization': currentUser,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({location: location })
+                    }
+                )
+                .then(response => {
+                    console.log(response)
+                    setData(data.filter(request => request._id !== e._id))
+                    // props.history.push('/')
+                })
+                console.log(e._id)
+                console.log(e)
+
+        
+         }
+
+        
+
+    const seeHistory = data.length && data.map((data, i) => {
                 return (
-                  <div>
+                  <div key={data._id}> 
                       You put in a service request on
                     <li>
                       Date: {moment(data.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")}{" "}   
                     </li>
                     <li>{data.fullName}</li>
                     <li>Phone number: {data.phoneNumber}</li>
+                    <li>Location: {data.location}</li>
+                
+                    <form onSubmit={updateLocation}>
+                    <input
+                    placeholder="update location" type="text" 
+                    onChange={handleLocationChange}
+                    className="locationInput-change"
+                    />
+                    <button type="submit" className="btn btn primary update-location-button">Submit</button>
+                    </form>
+
                     <button
                       onClick={() => {
                         cancelService(data);
@@ -63,16 +110,17 @@ const EloHistory = () => {
                       Cancel Charging Service
                     </button>
                   </div>
+                  
                 );
               });
 
   
     return (
-        <div>
+        <div className="elo-history-container">
             <h1>Passed Elo service History</h1>
             <hr/>
-            <div>
-                <ul>{seeHistory}</ul>
+            <div className="history-div">
+                <ul> {seeHistory} </ul>
             </div>
         </div>
     )

@@ -1,8 +1,6 @@
-import React, {useState, useEffect, state} from 'react';
-import moment from 'moment';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import EloMap from './EloMap';
-import Map from '../../src'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const currentUser = localStorage.getItem('jwtToken');
 
@@ -73,6 +71,7 @@ const EloRequest = (props) => {
                     },
                 });
                 console.log(updatedEloHistory.data);
+                props.history.push('/')
                 // window.location.reload();
             } catch (error) {
                 console.log(error);
@@ -130,7 +129,7 @@ const EloRequest = (props) => {
         <div className="elo_page">
 
             <div className="elo_form_div">
-                <form onSubmit={submitHandler} className="elo_fom">
+                <form onSubmit={submitHandler} className="elo_form">
 
             <label htmlFor='fullName' className="elo-labels">Full name</label>
             <input type="text" onChange={enterFullNameHandler} name='fullname' className="elo-input"/>
@@ -150,7 +149,7 @@ const EloRequest = (props) => {
             <div className="map-area">
             
             </div>
-            <EloMap/>
+            {/* <EloMap/> */}
         </div>
     )
 }

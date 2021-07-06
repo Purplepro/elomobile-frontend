@@ -70,9 +70,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <>
       <Navbar  isAuth={isAuthenticated} handleLogout={handleLogout} />
-      <div className="container mt-5">
+      {/* <div className="container mt-5"> */}
       <Switch>
         {/* all of my routes will go inside of here */}
         <Route path='/signup' component={ Signup } />
@@ -82,14 +82,14 @@ function App() {
         <Route path='/about' component={ About } />
         <Route exact path='/' component={ Welcome } />
         <PrivateRoute path= '/elorequest' component={EloRequest} user={currentUser} handleLogout={handleLogout}/>
-        <PrivateRoute path= '/elohistory' component={EloHistory} user={currentUser} handleLogout={handleLogout}/>
-        <PrivateRoute path='/profile' component={ Profile } user={currentUser} nowCurrentUser={nowCurrentUser} handleLogout={handleLogout} />
+        <PrivateRoute path= '/elohistory' component={EloHistory} user={currentUser} nowCurrentUser={nowCurrentUser} handleLogout={handleLogout}/>
+        <PrivateRoute path='/profile' component={ Profile } user={currentUser} nowCurrentUser={nowCurrentUser} setCurrentUser={setCurrentUser} handleLogout={handleLogout} />
            
       </Switch>
-      </div>
+      {/* </div> */}
       
       <Footer />
-    </div>
+    </>
   );
 }
 

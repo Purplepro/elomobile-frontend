@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 const currentUser = localStorage.getItem('jwtToken'); 
@@ -20,14 +21,14 @@ const Profile = (props) => {
     const userData = props.user ? 
     (<div>
         <h1>Profile</h1>
-        <p><strong>Name:</strong> { name }</p> 
-        <p><strong>Email:</strong> { email }</p> 
+        <p> { name }</p> 
+        <p>{ email }</p> 
         <p><strong>ID:</strong> { id }</p>
     </div>) : <h4>Loading...</h4>
 
     const updateName = async(e) => {
         e.preventDefault();
-            await fetch(`${REACT_APP_SERVER_URL}/api/users/profile`, {
+        const response = await fetch(`${REACT_APP_SERVER_URL}/api/users/profile`, {
                     method: "put",
                     headers: {
                         'Authorization': currentUser,
@@ -36,11 +37,16 @@ const Profile = (props) => {
                     body: JSON.stringify({name:userName})
                 }
             )
-            .then(response => {
-                console.log(response)
-                props.nowCurrentUser({...response.data, exp:props.user.exp});
-                props.history.push('/')
-            })
+        const data = await response.json()
+        console.log(data)
+        await props.setCurrentUser({...data});
+        console.log(props.user);
+        return <Redirect to='/profile'/>
+            // .then(response => {
+            //     console.log(response)
+            //     props.nowCurrentUser({...response.data, exp:props.user.exp});
+            //     props.history.push('/')
+            // })
     
      }
 
@@ -51,18 +57,25 @@ const Profile = (props) => {
     const errorDiv = () => {
         return (
             <div className="text-center pt-4">
-                <h3>Please <Link to="/login">login</Link> to view this page</h3>
+                <h3>Please <Link to="/login">login</Link> to view this page</h3>            
             </div>
         );
     };
     
     return (
-        <div>
+        <div className="Profile-container">
+            <div className="Profile-info">
             { props.user ? userData : errorDiv() }
-            <Link to="/elohistory"><button className="btn btn-primary">History</button></Link>
+            <Link to="/elohistory"><button className=" history-button">History</button></Link>
+            <hr/>
+            <br/>
             <form onSubmit={updateName}>
-            <input placeholder="update username" type="text" onChange={handleUserName} />
+            <input placeholder="update username" type="text" onChange={handleUserName} className="profile-input" />
+            <br/>
+            <button type='submit' className="change-user-button">Submit</button>
             </form>
+            </div>
+
         </div>
     );
 
