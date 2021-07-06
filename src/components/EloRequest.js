@@ -129,7 +129,7 @@ const EloRequest = (props) => {
         <div className="elo_page">
 
             <div className="elo_form_div">
-                <form onSubmit={submitHandler} className="elo_form">
+                <form onSubmit={submitHandler} className="elo-form">
 
             <label htmlFor='fullName' className="elo-labels">Full name</label>
             <input type="text" onChange={enterFullNameHandler} name='fullname' className="elo-input"/>

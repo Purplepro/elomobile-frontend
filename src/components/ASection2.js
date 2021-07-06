@@ -28,8 +28,9 @@ import PieChart from './PieChart';
            
           
     return (
+      <> <h1 className="vision-header">Our Vision</h1>
         <div className="Asection-2">
-            <h1 className="vision-header">Our Vision</h1>
+            
             <div className="pie-chart">
                 <PieChart/>
             </div>
@@ -38,7 +39,7 @@ import PieChart from './PieChart';
               <p> As shown, there are 264,000 accessible fast ev chargers worldwide. With this in mind, EloMobile aims to Have what we call a Fast reaction station which is where our electrical vans will dispatch from these stations and to the customers location to charge their vehicle. </p>
             </div>
         </div>
-        
+        </>
 
 
 
