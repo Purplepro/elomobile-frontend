@@ -128,21 +128,33 @@ const EloRequest = (props) => {
     return (
         <div className="elo_page">
 
-            <div className="elo_form_div">
+            <div className=" card card-body elo_form_div">
                 <form onSubmit={submitHandler} className="elo-form">
-
+            <div className="form-control">
+                
             <label htmlFor='fullName' className="elo-labels">Full name</label>
             <input type="text" onChange={enterFullNameHandler} name='fullname' className="elo-input"/>
+            </div>
+            <div className="form-control">
             <label htmlFor='evMake' className="elo-labels">Ev make</label>
             <input type="text" onChange={enterEvMakeHandler} name='evmake' className="elo-input"/>
+            </div>
+            <div className="form-control">
             <label htmlFor='evModel' className="elo-labels"> Ev model</label>
             <input type="text" onChange={enterEvModelHandler} name='evmodel' className="elo-input"/>
+            </div>
+            <div className="form-control">
             <label htmlFor='color' className="elo-labels"> Color</label>
             <input type="text" onChange={enterColorHandler} name='color' className="elo-input"/>
+            </div>
+            <div className="form-control">
             <label htmlFor='location' className="elo-labels">Location</label>
             <input type="text" onChange={enterLocationHandler} name='location'  className="elo-input"/>
+            </div>
+            <div className="form-control">
             <label htmlFor='phoneNumber' className="elo-labels">Phone number</label>
             <input type="text" onChange={enterPhoneNumberHandler} name='phonenumber' className="elo-input"/>
+            </div>
             <button className='btn btn-primary elo-button' type='submit'>Submit</button>
                 </form>
             </div>
