@@ -1,28 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
-import {GoogleMap, withScriptjs, withGoogleMap} from 'react-google-maps';
-import DoctorMarker from './DoctorMarker'
+import { Icon } from 'leaflet';
 
-const DoctorsMap = withScriptjs(withGoogleMap((props) => {
+
+ const EloMap = () => {         
+        return <MapContainer center={[37.431572, -78.656891]} zoom={12} className="leaflet-container">
+            <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
+
     
-    const markers = props.doctors.map(doctor => <DoctorMarker
-                    key={doctor.uid}
-                    doctor={doctor}
-                    location={{lat: doctor.closestPractice.lat, lng: doctor.closestPractice.lon}}
-                    />);
 
-
-            return (
-                <GoogleMap
-                defaultZoom={14}
-                center={{lat: 42.3601, lng: -71.0589} }>
-
-                    {markers}
-                </GoogleMap>
-                );        
+        </MapContainer>;
 }
 
-
-))
-
-export default DoctorsMap;
+export default EloMap;

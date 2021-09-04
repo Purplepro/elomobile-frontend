@@ -13,8 +13,8 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import About from './components/About';
-import EloRequest from './components/EloRequest';
 import EloHistory from './components/EloHistory';
+import Requests from './components/Requests';
 
 
 //Private route component
@@ -81,7 +81,7 @@ function App() {
        render={ (props) => <Login {...props} user={currentUser} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} /> } />
         <Route path='/about' component={ About } />
         <Route exact path='/' component={ Welcome } />
-        <PrivateRoute path= '/elorequest' component={EloRequest} user={currentUser} handleLogout={handleLogout}/>
+        <PrivateRoute path= '/elorequest' component={Requests} user={currentUser} handleLogout={handleLogout}/>
         <PrivateRoute path= '/elohistory' component={EloHistory} user={currentUser} nowCurrentUser={nowCurrentUser} handleLogout={handleLogout}/>
         <PrivateRoute path='/profile' component={ Profile } user={currentUser} nowCurrentUser={nowCurrentUser} setCurrentUser={setCurrentUser} handleLogout={handleLogout} />
            
